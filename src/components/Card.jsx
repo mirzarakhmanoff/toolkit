@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Modal from "./Modal";
+import { deleteUser } from "../redux/user-slice";
 
 const Card = () => {
   const users = useSelector((state) => state.user.value);

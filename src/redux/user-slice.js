@@ -11,8 +11,15 @@ const user = createSlice({
       state.value.push(action.payload);
       saveStorege("user", state.value);
     },
+    deleteUser: (state, action) => {
+      const index = action.payload;
+      if (index >= 0 && index < state.value.length) {
+        state.value.splice(index, 1);
+        saveStorege("user", state.value);
+      }
+    },
   },
 });
 
-export const { add } = user.actions;
+export const { add, deleteUser } = user.actions;
 export default user.reducer;
