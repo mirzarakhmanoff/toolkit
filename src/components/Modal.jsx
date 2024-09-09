@@ -1,11 +1,19 @@
 import React from "react";
 import { Button, Form, Input, Modal as AntdModal, Select } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../redux/user-slice";
 
 const Modal = ({ modal, setModal }) => {
   const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
 
   const handleRegister = (values) => {
     console.log("Submitted values:", values);
+    dispatch(add(values));
+    form.resetFields();
+    setModal(false);
+    console.log(user);
   };
 
   const onFinishFailed = (errorInfo) => {
